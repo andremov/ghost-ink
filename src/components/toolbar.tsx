@@ -54,7 +54,7 @@ export default function Toolbar() {
 
   return (
     <div
-      className={`py-2 px-20 flex justify-between items-center ${themes[theme].bg} ${themes[theme].text} `}
+      className={`py-2 px-1 md:px-20 flex justify-around items-center ${themes[theme].bg} ${themes[theme].text} `}
     >
       <div className="flex gap-2">
         <button
@@ -75,9 +75,12 @@ export default function Toolbar() {
         >
           <LucideDownload size={iconSize} />
         </button>
+      </div>
 
-        <div className="border-l border-current mx-2" />
+      <div className="border-l border-current mx-2 h-5" />
 
+      {/* Theme buttons */}
+      <div className="gap-2 hidden md:flex">
         <button
           onClick={() => setTheme("day")}
           className={`px-2 py-1 cursor-pointer rounded-md ${themes[theme].toolbar} 
@@ -99,8 +102,11 @@ export default function Toolbar() {
         >
           <LucideFlame size={iconSize} />
         </button>
-        <div className="border-l border-current mx-2" />
+      </div>
 
+      <div className="border-l border-current mx-2 h-5 hidden md:block" />
+
+      <div className="flex gap-2">
         <div className="flex items-center gap-2">
           <span className="text-sm">{fontSize}px</span>
           <input
@@ -113,10 +119,12 @@ export default function Toolbar() {
                        ${themes[theme].slider}`}
           />
         </div>
+      </div>
 
-        <div className="border-l border-current mx-2" />
+      <div className="border-l border-current mx-2 h-5 hidden sm:block" />
 
-        {/* Font buttons */}
+      {/* Font style buttons */}
+      <div className="gap-2 hidden sm:flex">
         <button
           onClick={() => setFont("sans")}
           className={`px-2 py-1 cursor-pointer rounded-md ${themes[theme].toolbar} 
@@ -143,7 +151,9 @@ export default function Toolbar() {
         </button>
       </div>
 
-      <div className="text-neutral-400 text-sm flex gap-4">
+      <div className="border-l border-current mx-2 h-5 hidden lg:block" />
+
+      <div className="text-neutral-400 text-sm gap-4 hidden lg:flex">
         <span>{getWordCount()} words</span>
         <span>{getCharacterCount()} characters</span>
       </div>
